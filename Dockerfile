@@ -2,24 +2,20 @@ FROM centos:6
 LABEL maintainer="AutoBuilder24x7"
 ENV container=docker
 
-ENV pip_packages "ansible"
-
 # Install requirements.
-RUN yum -y install deltarpm epel-release initscripts \
+RUN yum makecache --timer \
+ && yum -y install deltarpm epel-release \
  && yum -y update \
  && yum -y install \
-      python-pip \
       ansible \
       sudo \
       which \
+      initscripts \
       python-urllib3 \
       pyOpenSSL \
       python2-ndg_httpsclient \
       python-pyasn1 \
  && yum clean all
-
-# Install Ansible via Pip.
-RUN pip install $pip_packages
 
 # Disable requiretty.
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
