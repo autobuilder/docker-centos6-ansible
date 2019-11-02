@@ -6,14 +6,13 @@ ENV pip_packages "ansible"
 
 # Install requirements.
 RUN yum makecache fast \
- && yum -y install initscripts \
+ && yum -y install deltarpm epel-release initscripts \
  && yum -y update \
  && yum -y install \
       python-pip \
       ansible \
       sudo \
       which \
-      initscripts \
       python-urllib3 \
       pyOpenSSL \
       python2-ndg_httpsclient \
