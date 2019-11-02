@@ -5,8 +5,7 @@ ENV container=docker
 ENV pip_packages "ansible"
 
 # Install requirements.
-RUN yum makecache fast \
- && yum -y install deltarpm epel-release initscripts \
+RUN yum -y install deltarpm epel-release initscripts \
  && yum -y update \
  && yum -y install \
       python-pip \
