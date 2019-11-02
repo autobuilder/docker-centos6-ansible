@@ -3,7 +3,7 @@ LABEL maintainer="AutoBuilder24x7"
 ENV container=docker
 
 # Install requirements.
-RUN yum makecache --timer \
+RUN yum makecache fast \
  && yum -y install deltarpm epel-release \
  && yum -y update \
  && yum -y install \
